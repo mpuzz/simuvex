@@ -54,7 +54,7 @@ class SimState(ana.Storable): # pylint: disable=R0904
             options -= remove_options
         self.options = options
         self.mode = mode
-
+        self.id = 0
         # plugins
         self.plugins = { }
         if plugins is not None:
@@ -368,11 +368,10 @@ class SimState(ana.Storable): # pylint: disable=R0904
         c_arch = self.arch.copy()
         c_plugins = self._copy_plugins()
         state = SimState(arch=c_arch, plugins=c_plugins, options=self.options, mode=self.mode, os_name=self.os_name)
-
+        state.id = self.id
         state.uninitialized_access_handler = self.uninitialized_access_handler
         state._special_memory_filler = self._special_memory_filler
         state.ip_constraints = self.ip_constraints
-
         return state
 
     def merge(self, *others, **kwargs):

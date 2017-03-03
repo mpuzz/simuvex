@@ -24,6 +24,7 @@ event_types = {
     'cfg_handle_entry',
     'vfg_handle_successor',
     'vfg_widen_state',
+    'state_fork',
 }
 
 inspect_attributes = {
@@ -75,6 +76,8 @@ inspect_attributes = {
     'syscall_name',
 
     'path',
+
+    'forked_states'
     }
 
 BP_BEFORE = 'before'
